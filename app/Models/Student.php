@@ -29,5 +29,9 @@ class Student extends Model
         return $this->hasMany(Borrow::class);
     }
 
+    public function guardian(){
+        return $this->belongsTo(Guardian::class);
+    }
+
 
 }

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Models\Guardian;
 
 class StudentsController extends Controller
 {
@@ -57,16 +59,21 @@ class StudentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Guardian $guardian)
     {
         $this->validate($request,[
             'first_name'=> 'required',
             'last_name'=> 'required',
             'level'=> 'required',
+            'guardian_first_name'=>'required',
+            'guardian_last_name'=>'required',
+            'phone'=>'required',
             'comment'=> ''
-        ]);
 
+        ]);
         // get data entered into the form and send to table
+//        $query = DB::table('students')->join('guardians','guardians.student_id','students.id');
+
         $student = new Student;
         $student->first_name = $request->input('first_name');
         $student->last_name = $request->input('last_name');
@@ -75,8 +82,16 @@ class StudentsController extends Controller
         $student->user_id = auth()->user()->id;
         $student->save();
 
-        return redirect('/students')->with('success','Student created');
+        // this will allow me to enter data from the create student form into the guardian table
+        $guardian->student_id = $student->id;
+        $guardian->phone = $request->input('phone');
+        $guardian->first_name = $request->input('guardian_first_name');
+        $guardian->last_name = $request->input('guardian_last_name');
+        $guardian->save();
 
+
+
+        return redirect('/students')->with('success','Student created');
     }
 
     /**
