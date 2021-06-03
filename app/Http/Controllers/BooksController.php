@@ -35,6 +35,11 @@ class BooksController extends Controller
     {
         return view('books.create');
     }
+    public function test2(){
+        $book = Book::count();
+        return view('home')->with('book',$book);
+
+    }
 
     /**
      * Store a newly created resource in storage.

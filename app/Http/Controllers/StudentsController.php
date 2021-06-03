@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Guardian;
+use App\Models\Book;
+
+
 
 class StudentsController extends Controller
 {
@@ -59,6 +62,9 @@ class StudentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    // the guardian is is added as a parameter to the store fuction since we will be adding data to the guardian model
+    // from the form which is pointed to this function in the create view
     public function store(Request $request, Guardian $guardian)
     {
         $this->validate($request,[
@@ -105,11 +111,13 @@ class StudentsController extends Controller
         // return the individual student from the database based on the Id received from the student contorller
        // go to the Student Model and find the $id that came from the controller
 
-
-
         $student = Student::find($id);
         return view('students.show')->with('student', $student);
+
     }
+
+
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -149,6 +157,7 @@ class StudentsController extends Controller
         $student->save();
 
         return redirect('/students')->with('success','Student Updated');
+
 
 
     }

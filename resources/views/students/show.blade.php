@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
 
 
@@ -43,7 +43,7 @@
 
             </td>
             <td>
-                <h6>{{$student->comment}}</h6>
+                <h6>{{$student->count()}}</h6>
 
             </td>
 

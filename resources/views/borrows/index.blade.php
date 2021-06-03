@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
     <h1>List of books borrowed</h1>
     @if(count($borrows) > 0)
