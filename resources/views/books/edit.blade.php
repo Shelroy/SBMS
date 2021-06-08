@@ -1,11 +1,16 @@
 @extends('layouts.admin')
 @section('content')
-
-
-    <h1>Add a book</h1>
+<div class="container-fluid">
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title">Edit Book</h3>
+      </div>
 
     {!! Form::open(['action' => ['App\Http\Controllers\BooksController@update',$book->id],'method'=>'POST','enctype'=>'multipart/form-data']) !!}
-
+    <div class="card-body">
     <div class="form-group">
         {{Form::label('title','Book Title')}}
         {{Form::text('title',$book->title,['class'=>'form-control','placeholder'=>'Book Title'])}}
@@ -30,3 +35,8 @@
     {{Form::submit('Update',['class'=>'btn btn-primary'])}}
     {!! Form::close() !!}
 @endsection
+</div>
+</div>
+</div>
+</div>
+</div>

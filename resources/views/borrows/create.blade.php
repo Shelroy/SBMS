@@ -1,9 +1,17 @@
 @extends('layouts.admin')
 @section('content')
-
-    <h1>Distribute Book</h1>
+<div class="container-fluid">
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title">Create Transaction</h3>
+      </div>
 
     {!! Form::open(['action' => 'App\Http\Controllers\BorrowsController@store','method'=>'POST','enctype'=>'multipart/form-data']) !!}
+   <div class="card-body">
+
 
     <div class="form-group">
         {{Form::label('student_id','Student ID')}}
@@ -28,5 +36,10 @@
     </div>
     {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
     {!! Form::close() !!}
+       </div>
+       </div>
+     </div>
+   </div>
+ </div>
 
 @endsection

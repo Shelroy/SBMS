@@ -1,7 +1,14 @@
 @extends('layouts.admin')
 @section('content')
-    <h1>Add Student</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title">Add Student</h3>
+      </div>
     {!! Form::open(['action' => 'App\Http\Controllers\StudentsController@store','method'=>'POST','enctype'=>'multipart/form-data']) !!}
+    <div class="card-body">
    <div class="form-group">
        {{Form::label('first_name','First Name')}}
        {{Form::text('first_name','',['class'=>'form-control','placeholder'=>'First Name'])}}
@@ -31,6 +38,14 @@
         {{Form::label('comment','Comment')}}
         {{Form::textarea('comment','',['class'=>'form-control','placeholder'=>'Comment'])}}
     </div>
+    </div>
+      <div class="card-footer">
     {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
+  </div>
     {!! Form::close() !!}
+
+  </div>
+</div>
+</div>
+</div>
 @endsection

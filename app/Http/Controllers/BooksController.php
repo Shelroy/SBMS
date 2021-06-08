@@ -35,11 +35,10 @@ class BooksController extends Controller
     {
         return view('books.create');
     }
-    public function test2(){
-        $book = Book::count();
-        return view('home')->with('book',$book);
-
-    }
+    // public function test2(){
+    //     $book = Book::count();
+    //     return view('home')->with('book',$book);
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -79,7 +78,7 @@ class BooksController extends Controller
     public function show($id)
     {
         $book = Book::find($id);
-        return view('/books.show')->with('book',$book);
+        return view('books.show')->with('book',$book);
     }
 
     /**

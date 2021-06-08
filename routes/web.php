@@ -32,10 +32,13 @@ use App\Http\Controllers\BorrowsController;
 Route::get('/',[PagesController::class, 'index']);
 Route::get('/about',[PagesController::class, 'about']);
 
-Auth::routes();
+// Auth::routes();
+Auth::routes(['register' => false]);
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('/students/search',[App\Http\Controllers\StudentsController::class,'search']);
+// Route::get('/results', [App\Http\Controllers\StudentsController::class, 'results']);
 
 
 Route::resource('students',StudentsController::class);

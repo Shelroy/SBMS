@@ -117,7 +117,7 @@ class StudentsController extends Controller
     }
 
 
-    
+
 
     /**
      * Show the form for editing the specified resource.
@@ -176,4 +176,17 @@ class StudentsController extends Controller
 
 
     }
+
+    public function search(Request $request){
+      $search = $request->get('search');
+      $students = DB::table('students')->where('first_name','like', '%'.$search.'%')->
+      orWhere('last_name','like','%'.$search.'%')-> paginate(5);
+      // $students = Student::WHERE('first_name','LIKE','%'.$search_text.'%')->with('books')->get();
+
+    // return view('students.search',compact('students'));
+    return view('students.search')->with('students', $students);
+  }
+
+
+
 }

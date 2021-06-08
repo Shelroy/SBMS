@@ -5,6 +5,9 @@ namespace App\Models;
 use App\Http\Controllers\BooksController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Controllers\StudentsController;
+use App\Http\Controllers\SearchController;
+
 
 class Student extends Model
 {
